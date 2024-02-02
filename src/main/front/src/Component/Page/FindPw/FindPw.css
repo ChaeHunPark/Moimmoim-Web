@@ -1,0 +1,73 @@
+.findpw-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+}
+
+.findpw-logo{
+    padding-bottom: 5px;
+    margin-bottom: 3px;
+    border-bottom: 1px solid #aaa;
+}
+
+.findpw-logo-comment {
+    margin-bottom: 30px;
+}
+
+.findpw-container {
+    width: 500px;
+}
+.findpw-input {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    /* margin-bottom: 100px; */
+}
+
+.findpw-box {
+    display: flex;
+    height: 350px;
+    border: 1px solid #aaa;
+    flex-direction: column;
+
+}
+
+.findpw-form-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.same-comment {
+    
+    font-size: 13px;
+    margin: 20px 0 100px 8px;
+    /* margin-botto/m: 100px; */
+}
+
+.btn-check{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.input-id, .input-email{
+    margin-bottom: 10px;
+}
+
+.input-id > label, .input-email > label {
+    margin-right: 10px;
+}
+
+.input-email > button {
+    margin-left: 10px;
+}
+
+.verifi-number{
+    margin-left: 140px;
+    
+}
+

@@ -1,0 +1,61 @@
+.header-container{
+    background-color: bisque;
+    display: flex;
+    justify-content: space-between;
+    background-color: #FFE14D;
+    padding-bottom: 10px;
+    padding-top: 10px;
+
+}
+
+.left-container{
+    margin-left: 70px;
+}
+
+.logo-and-category{
+    margin-top: 50px;
+    display: flex;
+    font-weight: bold;
+}
+
+.logo-box{
+    font-size: 38px;
+    margin-right: 20px;
+
+
+}
+
+.category-box{
+    display: flex;
+    margin-bottom: 5px;
+}
+
+.category-box > li {
+    margin: 0 20px;
+    font-size: 25px;
+    align-self: flex-end; /* 아이템을 아래쪽으로 정렬 */
+}
+
+.right-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+}
+
+.login-and-password-box{
+    display: flex;
+    font-size: 13px;
+    margin-right: 350px;
+}
+
+.login-box{
+    padding-left: 40px;
+}
+
+.notice-and-inquiry-box{
+    display: flex;
+    font-size: 18px;
+    margin-left: 420px;
+    margin-bottom: 4px;
+}

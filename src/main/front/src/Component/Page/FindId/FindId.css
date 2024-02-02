@@ -1,0 +1,127 @@
+.findid-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+}
+
+.findid-container {
+    width: 600px;
+}
+
+.findid-form-box {
+    border: 1px solid #8C8C8C;
+    height: 350px;
+
+}
+.findid-form-in {
+    display: flex;
+
+    flex-direction: column;
+}
+
+.findid-birth-form-box {
+    margin-left: 20px;
+    margin-top: 30px;
+}
+
+.findid-birth-comment{
+    font-weight: bold;
+    font-size: 15px;
+    margin-left: 5px;
+}
+
+.findid-birth-comment2 {
+    color: #999999;
+    font-size: 13px;
+    margin-left: 26px;
+    margin-bottom: 20px;
+}
+
+.findid-birth-input {
+    margin-left: 26px;
+}
+
+.findid-birth-name {
+    margin-left: 13px;
+    margin-bottom: 10px;
+}
+
+.findid-birth-name > span {
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.findid-birth-birth > span {
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.findid-birth-name > input {
+    margin-left: 18px;
+    padding: 2px;
+    border: 1px solid #BDBDBD;
+}
+
+
+.findid-birth-birth > input {
+    margin-left: 9px;
+    padding: 2px;
+    border: 1px solid #BDBDBD;
+
+}
+
+.findid-birth-birth > input::placeholder {
+    color: #D8D8D8;
+    font-size: 9px;
+    position: relative;
+    padding-left: 10px;
+    
+}
+
+.findid-birth-birth > button {
+    margin-left: 10px;
+    font-size: 13px;
+    background-color: #FFE14D;
+    border: 1px solid #BDBDBD;
+}
+
+
+.findid-logo{
+    font-weight: bold;
+    font-size: 25px;
+    border-bottom: 2px solid #8C8C8C;
+    margin-bottom: 5px;
+}
+
+.findid-comment {
+    font-size: 13px;
+    margin-bottom: 20px;
+    
+}
+
+.go-to-page {
+    margin-top: 5px;
+    display: flex;
+    justify-content: center;
+
+}
+
+.go-to-page > div {
+    color: #8C8C8C;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.go-to-page > span {
+    color: #999999;
+
+}
+
+
+
+
+
+
+

@@ -1,0 +1,76 @@
+.login-body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* 화면 전체 높이에 따라 조절 */
+    margin: 0;
+}
+
+.login-container {
+    text-align: center;
+}
+
+.login-logo{
+    margin-top: 50px;
+    margin-bottom: 15px;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.login-form {
+    height: 400px;
+    max-width: 300px; /* 로그인 폼의 최대 너비 지정 */
+    padding: 20px;
+    border: 1px solid black;
+    border-radius: 8px;
+}
+
+.login-form input {
+    width: 70%;
+    padding: 15px;
+    margin-top: 10px;
+    border: 1px solid #BDBDBD;
+
+}
+.login-form input::placeholder{
+    color: #D8D8D8;
+}
+
+.login-form button {
+    margin-top: 10px;
+    width: 81%;
+    padding: 13px; /* 버튼 내부의 여백 조절 */
+    font-size: 16px; /* 버튼 텍스트의 크기 조절 */
+    background-color: #FFE14D;
+    border: none;
+}
+
+.find-container {
+    justify-content: center;
+    margin-top: 10px;
+    display: flex;
+
+}
+
+.find-container nav {
+    font-size: 11px;
+    color: #999999;
+}
+
+.find-container span {
+    font-size: 10px;
+    color: #D8D8D8;
+}
+
+.copy-right {
+    margin-top: 95px;
+    font-size: 9.5px;
+    color: #757575;
+}
+
+.copy-right span {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+
