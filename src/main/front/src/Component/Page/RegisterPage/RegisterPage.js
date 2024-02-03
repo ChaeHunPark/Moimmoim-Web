@@ -9,6 +9,10 @@ const RegisterPage = () => {
 
 
     const [changeNextForm, setChangeNextForm] = useState(false);
+    const [checkedUniqueId, setcheckedUniqueId] = useState({
+        state: false,
+        massage: '',
+    });
 
     // form 데이터
     const [formData, setFormData] = useState({
@@ -52,12 +56,17 @@ const RegisterPage = () => {
         const koreanPhoneNumberRegex = /^\d{3}-\d{3,4}-\d{4}$/;
 
         // 아이디
+
+
         if (formData.id === '') {
             vaild = false;
             newErrors.id = '아이디를 입력하세요.';
-        } else if (formData.id.length < 5) {
+        } else if (formData.id.length <= 5) {
             vaild = false;
             newErrors.id = '아이디는 5자 이상이어야 합니다.';
+        } else if (!checkedUniqueId.state) {
+            vaild = false;
+            newErrors.id = '아이디를 다시 확인해주세요.'
         } else {
             vaild = true;
             newErrors.id = '';
@@ -110,7 +119,7 @@ const RegisterPage = () => {
             vaild = true;
             newErrors.phone = '';
         }
-        
+
 
         if (vaild) {
             setChangeNextForm(true);
@@ -142,10 +151,41 @@ const RegisterPage = () => {
     };
 
 
-
+    // 폼 이전으로
     const handlePreviForm = (e) => {
         setChangeNextForm(false);
     };
+
+
+
+    // 아이디 중복체크
+    const isIdUnique = () => {
+        const id = formData.id
+        if (id.length >= 5) {
+            //@RequstParam = {params: {}}
+            axios.get('/api/is_id_unique', { params: { id: id } })
+                .then((res) => {
+                    if (res.data) {
+                        setcheckedUniqueId(true);
+                        setErrors({
+                            ...errors,
+                            id : "사용가능한 아이디 입니다.",
+                        });
+                    }else{
+                        setErrors({
+                            ...errors,
+                            id : "중복된 아이디 이거나 사용 불가능한 아이디 입니다.",
+                        });
+                    }
+                })
+                .catch((e) => {
+                    console.log(e);
+                });
+        }
+    };
+
+
+
 
 
     // 폼 제출
@@ -161,12 +201,16 @@ const RegisterPage = () => {
             ...formData,
             [e.currentTarget.name]: e.currentTarget.value,
         });
-        
+
     };
+
+
+    
 
     const Register = () => {
         axios.post('/api/register', formData)
             .then((response) => {
+                console.log(formData)
                 setResData(response.data);
                 alert(response.data)
             })
@@ -174,7 +218,6 @@ const RegisterPage = () => {
                 console.log(err)
             })
     };
-
 
 
     return (
@@ -188,8 +231,9 @@ const RegisterPage = () => {
                         <form onSubmit={handleSubmit}>
                             <div className='register-form'>
                                 <div className='input-id'>
-                                    <label htmlFor='id'>아이디</label> <input type='text' id='id' name='id' value={formData.id} onChange={handleInputChange}></input>
+                                    <label htmlFor='id'>아이디</label> <input type='text' id='id' name='id' value={formData.id} onChange={handleInputChange}></input> <button onClick={isIdUnique} type='button'>중복확인</button>
                                     <div>
+                                        {checkedUniqueId.massage}
                                         {errors.id}
                                     </div>
                                 </div>
