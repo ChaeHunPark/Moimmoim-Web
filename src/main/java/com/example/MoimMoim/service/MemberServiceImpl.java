@@ -4,6 +4,7 @@ import com.example.MoimMoim.domain.Member;
 import com.example.MoimMoim.repository.MemberRepository;
 import com.example.MoimMoim.dto.MemberRequestDto;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,11 +15,14 @@ import java.util.List;
 public class MemberServiceImpl implements MemberService {
 
     private final MemberRepository memberRepository;
+    private final PasswordEncoder passwordEncoder;
 
     @Autowired
-    public MemberServiceImpl(MemberRepository memberRepository) {
+    public MemberServiceImpl(MemberRepository memberRepository, PasswordEncoder passwordEncoder) {
         this.memberRepository = memberRepository;
+        this.passwordEncoder = passwordEncoder;
     }
+
 
     // 회원가입 서비스
     @Transactional
@@ -27,7 +31,7 @@ public class MemberServiceImpl implements MemberService {
         //회원 가입 처리
         Member newMember = new Member();
         newMember.setId(memberRequestDto.getId());
-        newMember.setPassword(memberRequestDto.getPassword());
+        newMember.setPassword(passwordEncoder.encode(memberRequestDto.getPassword()));
         newMember.setEmail(memberRequestDto.getEmail());
         newMember.setPhone(memberRequestDto.getPhone());
         newMember.setName(memberRequestDto.getName());

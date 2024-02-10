@@ -3,6 +3,8 @@ package com.example.MoimMoim.domain;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDateTime;
+
 @NoArgsConstructor
 @Getter // Getter 자동생성
 @Setter // Setter 자동생성
@@ -13,8 +15,9 @@ public class Member {
 
     @Id // primary key, 기본키
     @GeneratedValue(strategy = GenerationType.IDENTITY) // 0번부터 자동 생성
-    private Long userindex;
+    private Long user_index;
 
+    @Id
     @Column(nullable = false, unique = true)
     private String id;
 
@@ -44,5 +47,13 @@ public class Member {
 
     @Column(nullable = false)
     private String find_answers;
+
+    @Column(nullable = false)
+    private LocalDateTime registration_date;
+
+    @PrePersist
+    protected void onCreate(){
+        registration_date = LocalDateTime.now();
+    }
 
 }

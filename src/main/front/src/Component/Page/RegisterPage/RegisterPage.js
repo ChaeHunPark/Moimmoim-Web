@@ -1,11 +1,9 @@
 import { useState } from 'react';
 import './RegisterPage.css'
-import './SquareRadioButton.css'
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 const RegisterPage = () => {
-
 
 
     const [changeNextForm, setChangeNextForm] = useState(false);
@@ -212,10 +210,12 @@ const RegisterPage = () => {
             .then((response) => {
                 console.log(formData)
                 setResData(response.data);
-                alert(response.data)
+                alert(response.data);
+                console.log(response.data)
             })
             .catch((err) => {
                 console.log(err)
+                alert(err)
             })
     };
 

@@ -34,8 +34,8 @@ dependencies {
 	implementation 'org.projectlombok:lombok:1.18.26'
 	annotationProcessor 'org.projectlombok:lombok:1.18.26' // Lombok annotation processor 추가
 
-	//BCrypt
-//	implementation 'org.springframework.boot:spring-boot-starter-security'
+
+	implementation 'org.springframework.boot:spring-boot-starter-security'
 }
 
 tasks.named('test') {
