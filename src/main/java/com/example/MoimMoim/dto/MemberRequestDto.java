@@ -15,7 +15,7 @@ public class MemberRequestDto {
     private String birth;
     private String gender;
     private String nickname;
-    private String find_question;
-    private String find_answers;
+    private String question;
+    private String answer;
 
 }

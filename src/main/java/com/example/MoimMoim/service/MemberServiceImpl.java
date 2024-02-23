@@ -38,16 +38,19 @@ public class MemberServiceImpl implements MemberService {
         newMember.setBirth(memberRequestDto.getBirth());
         newMember.setGender(memberRequestDto.getGender());
         newMember.setNickname(memberRequestDto.getNickname());
-        newMember.setFind_question(memberRequestDto.getFind_question());
-        newMember.setFind_answers(memberRequestDto.getFind_answers());
+        newMember.setQuestion(memberRequestDto.getQuestion());
+        newMember.setAnswer(memberRequestDto.getAnswer());
 
         return memberRepository.save(newMember);
     };
 
     // 중복아이디 조회
-    public boolean existsId(String id){
-        List<String> memberById = memberRepository.findMemberById(id);
-        return memberById.isEmpty();
+    public boolean checkIfMemberExists(String id){
+        return !memberRepository.existsById(id); // 아이디를 찾지 못하면 true를 넘겨줌
+    }
+
+    public boolean checkIfNicknameExists(String nickname){
+        return !memberRepository.existsByNickname(nickname); //닉네임이 없으면 true
     }
 
 }

@@ -24,9 +24,17 @@ public class MemberRestController {
     }
 
 
-    @GetMapping("/is_id_unique")
-    public boolean isIdUnique(@RequestParam String id){
-        if(memberService.existsId(id)){
+    @PostMapping("/check-id")
+    public boolean CheckId(@RequestBody MemberRequestDto memberRequestDto){
+        if(memberService.checkIfMemberExists(memberRequestDto.getId())){
+            return true;
+        }
+        return false;
+    };
+
+    @PostMapping("/check-nickname")
+    public boolean CheckNickname(@RequestBody MemberRequestDto memberRequestDto){
+        if(memberService.checkIfNicknameExists(memberRequestDto.getNickname())){
             return true;
         }
         return false;

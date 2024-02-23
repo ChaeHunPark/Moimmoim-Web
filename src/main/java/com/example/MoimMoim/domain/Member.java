@@ -12,12 +12,10 @@ import java.time.LocalDateTime;
 @Table(name = "Member") //테이블 이름
 public class Member {
 
-
-    @Id // primary key, 기본키
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // 0번부터 자동 생성
     private Long user_index;
 
-    @Id
     @Column(nullable = false, unique = true)
     private String id;
 
@@ -43,10 +41,10 @@ public class Member {
     private String nickname;
 
     @Column(nullable = false)
-    private String find_question;
+    private String question;
 
     @Column(nullable = false)
-    private String find_answers;
+    private String answer;
 
     @Column(nullable = false)
     private LocalDateTime registration_date;

@@ -6,9 +6,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 import java.util.Optional;
 
-public interface MemberRepository{
+public interface MemberRepository extends JpaRepository<Member, Long>{
     Member save(Member member);
-
-    List<String> findMemberById(String id);
+    boolean existsById(String id);
+    boolean existsByNickname(String nickname);
 
 }

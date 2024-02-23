@@ -6,6 +6,7 @@ import com.example.MoimMoim.dto.MemberRequestDto;
 
 public interface MemberService {
     Member signUp(MemberRequestDto memberRequestDto);
-    boolean existsId(String id);
+    boolean checkIfMemberExists(String id);
+    boolean checkIfNicknameExists(String nickname);
 
 }
