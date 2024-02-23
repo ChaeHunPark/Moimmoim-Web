@@ -50,11 +50,12 @@ const RegisterPage = () => {
         validationSchema: validationSchemaSecond,
         onSubmit: async values => {
             const data = {...formikFirst.values, ...values}
+            const isNicknameAvailable = await checkNicknameAvailable(formikSecond, values);
 
-            // 연산 리턴값 비교할 때는 ===을 사용하자
-            if(checkNicknameAvailable(formikSecond, values) === true){
-                Register(data,setResData);
+            if(isNicknameAvailable){
+                Register(data, setResData);
             }
+            
         },
     });
 
