@@ -9,6 +9,7 @@ import { checkIdAvailable, checkNicknameAvailable } from '../../../api/Register/
 import axios from 'axios';
 import { formatPhoneNumber } from '../../../utils/Register/phoneUtils';
 import { formatBirthNumber } from '../../../utils/Register/birthUtils';
+import { PageTracker } from '../../../api/PageTracker';
 
 
 
@@ -74,6 +75,11 @@ const RegisterPage = () => {
         const formattedBirth = formatBirthNumber(inputBirth);
         formikSecond.setFieldValue('birth', formattedBirth)
     }
+
+    //페이지 트랙커
+    useEffect(() =>{
+        PageTracker(window.location.pathname);
+    },[])
 
 
     return (

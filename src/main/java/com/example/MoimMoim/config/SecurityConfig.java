@@ -29,7 +29,11 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf(AbstractHttpConfigurer::disable)
             .cors(AbstractHttpConfigurer::disable)
-                .authorizeHttpRequests(requests -> requests.anyRequest().permitAll())
+                .authorizeHttpRequests(requests -> requests // 접근제한 설정 시작
+                                .requestMatchers("/api/register").authenticated() // 인증해야 접근가능
+                                .requestMatchers("/api/main","/api/login").permitAll() //인증 필요 없음
+
+                        )
                 .formLogin(Customizer.withDefaults())
                 .httpBasic(Customizer.withDefaults());
         return http.build();
