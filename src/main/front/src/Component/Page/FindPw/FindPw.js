@@ -1,13 +1,8 @@
-import { useEffect } from 'react';
+
 import './FindPw.css'
-import { PageTracker } from '../../../api/PageTracker';
 
 const FindPw = () => {
 
-    //페이지 트랙커
-    useEffect(() => {
-        PageTracker(window.location.pathname);
-    }, [])
 
     return (
         <>

@@ -3,7 +3,6 @@
 import React, { useEffect, useState } from 'react';
 import './FindId.css'
 import { Link } from 'react-router-dom';
-import { PageTracker } from '../../../api/PageTracker';
 
 const FindId = () => {
 
@@ -61,10 +60,6 @@ const FindId = () => {
 
     };
 
-    //페이지 트랙커
-    useEffect(() => {
-        PageTracker(window.location.pathname);
-    }, [])
 
 
     return (

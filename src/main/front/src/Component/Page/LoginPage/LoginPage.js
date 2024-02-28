@@ -1,25 +1,57 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './LoginPage.css'
-import { useEffect } from 'react';
-import { PageTracker } from '../../../api/PageTracker';
+import { useEffect, useState } from 'react';
+
+import axios from 'axios';
 
 const LoginPage = () => {
 
+    const [id, setId] = useState('');
+    const [password, setPassword] = useState('');
+    const navi = useNavigate();
+
+
+    const handleChange = async (e,setState) =>{
+        setState(e.target.value);
+    }
+
+    const handleLogin = async (e) =>{
+        
+        e.preventDefault();
+        try {
+            const data = {
+                id: id,
+                password: password
+            };
+            const response = await axios.post('/api/authenticate',data);
+            const token = response.data.token;
+            localStorage.setItem('token', token);
+            navi("/main")
+            console.log(response.data.token)
+
+        } catch (error) {
+            alert("아이디 또는 비밀번호가 틀렸습니다.")
+            console.log('로그인 실패: ', error);
+        }
+
+    }
+
+
     //페이지 트랙커
     useEffect(() => {
-        PageTracker(window.location.pathname);
     }, [])
 
     return (<>
         <div className='login-body'>
-            <div class="login-container">
-                <form class="login-form">
+            <div className="login-container">
+                <form className="login-form" onSubmit={handleLogin} >
                     <div className='login-logo'>
                         <Link to={'/'}>MoimMoim</Link>
                     </div>
-                    <input type="text" id="username" name="username" required placeholder='ID' />
-                    <input type="password" id="password" name="password" required placeholder='Password' />
+                    <input type="text" id="id" name="id" required placeholder='ID' value={id} onChange={(e) =>{handleChange(e, setId)}}/>
+                    <input type="password" id="password" name="password" required placeholder='Password' value={password} onChange={(e) =>{handleChange(e, setPassword)}} />
                     <div></div>
+                    <button type="submit">Login</button>
                     <button type="submit">Login</button>
 
                     <div className='find-container'>

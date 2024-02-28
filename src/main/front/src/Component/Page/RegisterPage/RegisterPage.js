@@ -6,10 +6,9 @@ import { useFormik } from 'formik';
 import { validationSchemaFirst, validationSchemaSecond } from '../../../utils/Register/ValidationStorage';
 import { Register } from '../../../api/Register/Register';
 import { checkIdAvailable, checkNicknameAvailable } from '../../../api/Register/CheckAvailable';
-import axios from 'axios';
 import { formatPhoneNumber } from '../../../utils/Register/phoneUtils';
 import { formatBirthNumber } from '../../../utils/Register/birthUtils';
-import { PageTracker } from '../../../api/PageTracker';
+
 
 
 
@@ -54,6 +53,7 @@ const RegisterPage = () => {
             const isNicknameAvailable = await checkNicknameAvailable(formikSecond, values);
 
             if(isNicknameAvailable){
+                console.log(data);
                 Register(data, setResData);
             }
             
@@ -76,10 +76,6 @@ const RegisterPage = () => {
         formikSecond.setFieldValue('birth', formattedBirth)
     }
 
-    //페이지 트랙커
-    useEffect(() =>{
-        PageTracker(window.location.pathname);
-    },[])
 
 
     return (

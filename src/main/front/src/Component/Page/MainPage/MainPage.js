@@ -7,7 +7,6 @@ const MainPage = () => {
 
     //페이지 트랙커
     useEffect(() => {
-        PageTracker(window.location.pathname);
     }, [])
 
     return (<>

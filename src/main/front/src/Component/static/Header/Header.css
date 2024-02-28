@@ -31,6 +31,7 @@
 }
 
 .category-box > li {
+    list-style: none;
     margin: 0 20px;
     font-size: 25px;
     align-self: flex-end; /* 아이템을 아래쪽으로 정렬 */

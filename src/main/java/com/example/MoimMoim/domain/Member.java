@@ -4,8 +4,11 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.Set;
 
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Getter // Getter 자동생성
 @Setter // Setter 자동생성
 @Entity // JPA의 엔티티 클래스임
@@ -53,5 +56,15 @@ public class Member {
     protected void onCreate(){
         registration_date = LocalDateTime.now();
     }
+
+    @Column(name = "activated")
+    private boolean activated;
+
+    @ManyToMany
+    @JoinTable(
+            name = "user_authority",
+            joinColumns = {@JoinColumn(name = "user_index")},
+            inverseJoinColumns = {@JoinColumn(name = "authority_name")})
+    private Set<Authority> authorities;
 
 }
