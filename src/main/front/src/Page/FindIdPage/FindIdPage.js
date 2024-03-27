@@ -1,10 +1,10 @@
 
 
-import React, { useEffect, useState } from 'react';
-import './FindId.css'
+import React, { useState } from 'react';
+import './FindIdPage.css'
 import { Link } from 'react-router-dom';
 
-const FindId = () => {
+const FindIdPage = () => {
 
     const FindForm = (props) => {
 
@@ -100,4 +100,4 @@ const FindId = () => {
 
 }
 
-export default FindId;
+export default FindIdPage;

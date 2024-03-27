@@ -1,7 +1,7 @@
 import axios from "axios";
 
 
-export const checkUserIdAvailable = async (formikFirst, values, setSection) => {
+export const checkIdAvailable = async (formikFirst, values, setSection) => {
     try {
         const response = await axios.post('/api/check-id', { id: values.id });
         // 중복 여부에 따라 처리

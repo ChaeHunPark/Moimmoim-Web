@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
-const DaumAddress = ({ onDataChange }) => {
+const DaumMap = ({ onDataChange }) => {
 
     const initMap = () => {
         const mapContainer = document.getElementById('map'); // 지도를 표시할 div
@@ -74,4 +74,4 @@ const DaumAddress = ({ onDataChange }) => {
     );
 }
 
-export default DaumAddress;
+export default DaumMap;

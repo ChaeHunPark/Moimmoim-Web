@@ -1,7 +1,7 @@
 
-import './FindPw.css'
+import './FindPwPage.css'
 
-const FindPw = () => {
+const FindPwPage = () => {
 
 
     return (
@@ -44,4 +44,4 @@ const FindPw = () => {
     )
 }
 
-export default FindPw;
+export default FindPwPage;

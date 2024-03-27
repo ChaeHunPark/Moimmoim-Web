@@ -1,7 +1,7 @@
 import * as yup from 'yup';
 
 export const validationSchemaFirst = yup.object({
-    userId: yup.string().min(5, '아이디는 5글자 이상이어야 합니다.').matches(/^[a-zA-Z0-9]+$/, '아이디에는 한글이 포함될 수 없습니다.').required('아이디를 입력하세요.'),
+    id: yup.string().min(5, '아이디는 5글자 이상이어야 합니다.').matches(/^[a-zA-Z0-9]+$/, '아이디에는 한글이 포함될 수 없습니다.').required('아이디를 입력하세요.'),
     password: yup
         .string()
         .matches(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/, '비밀번호는 최소 8자 이상이어야 하며, 영문, 숫자, 특수문자를 모두 포함해야 합니다.')

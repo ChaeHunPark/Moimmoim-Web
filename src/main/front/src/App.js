@@ -1,13 +1,13 @@
 import { BrowserRouter, Routes, Route,} from 'react-router-dom';
-import MainPage from './Component/Page/MainPage/MainPage';
-import LoginPage from './Component/Page/LoginPage/LoginPage';
-import FindId from './Component/Page/FindId/FindId';
-import FindPw from './Component/Page/FindPw/FindPw';
-import RegisterPage from './Component/Page/RegisterPage/RegisterPage';
+import MainPage from './Page/MainPage/MainPage'
+import LoginPage from './Page/LoginPage/LoginPage';
+import FindIdPage from './Page/FindIdPage/FindIdPage';
+import FindPwPage from './Page/FindPwPage/FindPwPage';
+import RegisterPage from './Page/RegisterPage/RegisterPage';
+import ForbiddenPage from './Page/ForbiddenPage/ForbiddenPage';
+import CreatePostPage from './Page/BoradPage/CreateBoardPage/CreateBoardPage';
+import FreeBoardListPage from './Page/BoradPage/FreeBoardPage/FreeBoardListPage';
 import { Auth } from './hoc/Auth';
-import ForbiddenPage from './Component/Page/ForbiddenPage/ForbiddenPage';
-import { CreatePost } from './Component/Page/BoradPage/CreatePost';
-import DaumAddress from './Component/Page/BoradPage/DaumAddress';
 
 
 
@@ -22,15 +22,14 @@ function App() {
 
       <BrowserRouter initialEntries={['/main']}>
         <Routes>
-          <Route path="/main" element={<AuthenticatedMainPage/>}></Route>
-          <Route path="/login" element={<LoginPage />}></Route>
-          <Route path='/findid' element={<FindId />}></Route>
-          <Route path='/findpw' element={<FindPw />}></Route>
-          <Route path='/registeruser' element={<RegisterPage />}></Route>
-          <Route path='/createpost' element={<CreatePost/>}/>
-          <Route path="/address" element={<DaumAddress/>} />
+          <Route path="/main" element={<AuthenticatedMainPage/>}/>
+          <Route path="/login" element={<LoginPage/>}></Route>
+          <Route path='/findid' element={<FindIdPage/>}></Route>
+          <Route path='/findpw' element={<FindPwPage/>}></Route>
+          <Route path='/registeruser' element={<RegisterPage/>}/>
+          <Route path='/createpost' element={<CreatePostPage/>}/>
           <Route path="/forbidden" element={<ForbiddenPage/>} />
-
+          <Route path="freeboard" element={<FreeBoardListPage/>}/>
         </Routes>
       </BrowserRouter>
 

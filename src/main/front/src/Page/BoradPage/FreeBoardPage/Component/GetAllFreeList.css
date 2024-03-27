@@ -1,0 +1,37 @@
+/* 게시글 목록 컨테이너 스타일 */
+.free-board-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* 각 게시글 항목 스타일 */
+.free-board-item {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: #f9f9f9;
+}
+
+/* 게시글 제목 스타일 */
+.free-board-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+/* 게시글 내용 스타일 */
+.free-board-content {
+    font-size: 16px;
+    color: #666;
+    line-height: 1.6;
+}
+
+/* 게시글 작성일 스타일 */
+.free-board-date {
+    font-size: 14px;
+    color: #999;
+    margin-top: 10px;
+}

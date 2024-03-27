@@ -1,9 +1,10 @@
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import './Editor.css'
-import { useEffect, useState } from 'react';
-import DaumAddress from './DaumAddress';
+import { useState } from 'react';
+import DaumAddress from './DaumMap';
 import axios from 'axios';
+
 
 const Editor = () => {
     const [checkMoim, setCheckMoim] = useState("free");
@@ -72,28 +73,48 @@ const Editor = () => {
     };
 
     const handleSubmit = async () => {
+        let endpoint = 'moim-board'
 
-        const data = await {
-            userId : localStorage.getItem("userId"), // 유저 아이디
-            title : title, // 제목
-            category : category, // 카테고리
-            dateTime : dateTime, // 모임 시간
-            latitude : latitude, // 위도
-            longitude : longitude, // 경도
-            address : address, // 주소
-            detailAddress : detailAddress, // 상세 주소
-            peopleLimited : peopleLimited, // 인원제한
-            ageLimit : ageLimit, // 나이 제한
+
+        const data = {
+            id: localStorage.getItem("id"), // 유저 아이디
+            title: title, // 제목
+            category: category, // 카테고리
+            content: content, // 게시글 내용
+            dateTime: dateTime, // 모임 시간
+            latitude: latitude, // 위도
+            longitude: longitude, // 경도
+            address: address, // 주소
+            detailAddress: detailAddress, // 상세 주소
+            peopleLimited: peopleLimited, // 인원제한
+            ageLimit: ageLimit // 나이 제한
         }
-        console.log(data)
 
-        // try {
-        //     await axios.post('/api/create-board',data)
+        if (checkMoim === "free") {
+            delete data.dateTime;
+            delete data.latitude;
+            delete data.longitude;
+            delete data.address;
+            delete data.detailAddress;
+            delete data.peopleLimited;
+            delete data.ageLimit;
+            endpoint = 'free-board'
 
-        //     console.log('Data sent successfully!');
-        // } catch (error) {
-        //     console.error(error);
-        // }
+
+        }
+        
+
+
+
+
+
+        try {
+            const response = await axios.post(`/api/${endpoint}`, data,)
+            console.log('데이터 전송 성공:', response.data);
+            console.log(data);
+        } catch (error) {
+            console.error('데이터 전송 실패:', error);
+        }
 
 
     };
@@ -124,23 +145,7 @@ const Editor = () => {
                             onChange={handleDetailAddressChange}
                         />
                     </div>
-                    <div>
-                        <label>카테고리:</label>
-                        <select value={category} onChange={handleCategoryChange}>
-                            <option value="">카테고리 선택</option>
-                            <option value="스포츠">스포츠</option>
-                            <option value="음악">음악</option>
-                            <option value="예술">예술</option>
-                            <option value="요리">요리</option>
-                            <option value="여행">여행</option>
-                            <option value="책">책</option>
-                            <option value="IT/기술">IT/기술</option>
-                            <option value="비즈니스">비즈니스</option>
-                            <option value="사회활동">사회활동</option>
-                            <option value="공예">공예</option>
-                            <option value="기타">기타</option>
-                        </select>
-                    </div>
+
                     <div>
                         <label>날짜 및 시간:</label>
                         <input
@@ -175,6 +180,23 @@ const Editor = () => {
                         onChange={handleTitleChange}
                         placeholder="게시글 제목을 입력하세요"
                     />
+                </div>
+                <div>
+                    <label>카테고리:</label>
+                    <select value={category} onChange={handleCategoryChange}>
+                        <option value="">카테고리 선택</option>
+                        <option value="스포츠">스포츠</option>
+                        <option value="음악">음악</option>
+                        <option value="예술">예술</option>
+                        <option value="요리">요리</option>
+                        <option value="여행">여행</option>
+                        <option value="책">책</option>
+                        <option value="IT/기술">IT/기술</option>
+                        <option value="비즈니스">비즈니스</option>
+                        <option value="사회활동">사회활동</option>
+                        <option value="공예">공예</option>
+                        <option value="기타">기타</option>
+                    </select>
                 </div>
 
                 <div className='cheditor-container'>

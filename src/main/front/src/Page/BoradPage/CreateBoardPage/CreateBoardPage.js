@@ -1,11 +1,11 @@
 
 
-import Header from "../../static/Header/Header"
-import { useEffect, useRef, useState } from "react";
-import './CreatePost.css'
-import Editor from './Editor';
+import Header from "../../../static/Header/Header"
+import { useEffect} from "react";
+import './CreateBoardPage.css'
+import Editor from './Component/Editor';
 
-export const CreatePost = () => {
+const CreateBoardPage = () => {
 
 
 
@@ -28,3 +28,5 @@ export const CreatePost = () => {
         </>
     )
 }
+
+export default CreateBoardPage;
