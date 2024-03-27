@@ -28,7 +28,7 @@ public class MemberRestController {
 
     @PostMapping("/check-id")
     public boolean CheckId(@RequestBody MemberDto memberDto){
-        if(memberService.checkIfMemberExists(memberDto.getUserId())){
+        if(memberService.checkIfMemberExists(memberDto.getId())){
             return true;
         }
         return false;
@@ -63,12 +63,12 @@ public class MemberRestController {
      * 사용자 및 권한 정보는 MemberDto로 래핑되어 반환됩니다.
      * 엔드포인트에 접근하려면 사용자는 'ADMIN' 역할이 있어야 함
      *
-     * @param userId 조회할 사용자의 ID
+     * @param id 조회할 사용자의 ID
      * @return ResponseEntity<MemberDto> 객체 (사용자 정보 및 권한 정보 포함)
      */
     @GetMapping("/user/{username}")
     @PreAuthorize("hasAnyRole('ADMIN')")
-    public ResponseEntity<MemberDto> getUserInfo(@PathVariable String userId) {
-        return ResponseEntity.ok(memberService.getUserWithAuthorities(userId));
+    public ResponseEntity<MemberDto> getUserInfo(@PathVariable String id) {
+        return ResponseEntity.ok(memberService.getUserWithAuthorities(id));
     }
 }

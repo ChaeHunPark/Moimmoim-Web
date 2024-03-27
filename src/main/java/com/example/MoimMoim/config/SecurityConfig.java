@@ -54,7 +54,8 @@ public class SecurityConfig {
                 .authorizeHttpRequests(requests -> requests // 접근제한 설정 시작
 //                                .requestMatchers("/api/register").authenticated() // 인증해야 접근가능
                                 .requestMatchers("/api/main","/api/login","/api/registeruser","/api/logins").permitAll() //인증 필요 없음
-                                .requestMatchers("/api/check-id","/api/check-nickname","/api/register", "/api/authenticate","/api/user").permitAll()
+                                .requestMatchers("/api/check-id","/api/check-nickname","/api/register", "/api/authenticate","/api/user",
+                                                        "/api/free-board", "/api/moim-board","/api/get-all-free-boards").permitAll()
                 )
                                 // 세션을 사용하지 않기 때문에 STATELESS로 설정
                                 .sessionManagement(sessionManagement ->

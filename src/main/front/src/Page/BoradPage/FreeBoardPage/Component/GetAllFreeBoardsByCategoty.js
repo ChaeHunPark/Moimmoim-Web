@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import './GetAllFreeList.css'
+import './GetAllFreeBoardsByCategoty.css'
 import { ListComponent } from "./ListComponent";
-export const GetAllFreeList = () => {
+export const GetAllFreeBoardsByCategoty = () => {
 
     const [allFreeBoards, setAllFreeBoards] = useState([]);
 
@@ -13,6 +13,8 @@ export const GetAllFreeList = () => {
                 console.log(allFreeBoards)
             })
     }
+
+    
 
 
     useEffect(() => {

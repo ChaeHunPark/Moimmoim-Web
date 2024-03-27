@@ -9,6 +9,7 @@ export const ListComponent = (props) => {
                             <th>제목</th>
                             <th>글쓴이</th>
                             <th>작성일</th>
+                            <th>카테고리</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -16,8 +17,9 @@ export const ListComponent = (props) => {
                             <tr key={board.freeBoardKey}>
                                 <td>{board.freeBoardKey}</td>
                                 <td>{board.title}</td>
-                                <td>{board.member.name}</td> {/* 예시: 글쓴이 이름 필드에 맞게 수정 */}
-                                <td>{board.createdAt}</td> {/* 예시: 작성일 필드에 맞게 수정 */}
+                                <td>{board.member.name}</td> 
+                                <td>{board.createdAt}</td>
+                                <td>{board.category}</td>
                             </tr>
                         ))}
                     </tbody>

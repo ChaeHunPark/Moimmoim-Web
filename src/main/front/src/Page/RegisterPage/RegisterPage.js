@@ -3,11 +3,11 @@ import './RegisterPage.css'
 import { Link } from 'react-router-dom';
 import { useFormik } from 'formik';
 
-import { validationSchemaFirst, validationSchemaSecond } from '../../utils/Register/ValidationStorage';
+import { validationSchemaFirst, validationSchemaSecond } from '../../utils/RegisterPage/ValidationStorage';
 import { Register } from './Api/Register';
 import { checkIdAvailable, checkNicknameAvailable } from './Api/CheckAvailable';
-import { formatPhoneNumber } from '../../utils/Register/phoneUtils';
-import { formatBirthNumber } from '../../utils/Register/birthUtils';
+import { formatPhoneNumber } from '../../utils/RegisterPage/phoneUtils';
+import { formatBirthNumber } from '../../utils/RegisterPage/birthUtils';
 
 
 

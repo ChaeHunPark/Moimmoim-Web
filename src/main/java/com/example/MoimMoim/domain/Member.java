@@ -17,10 +17,11 @@ public class Member {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // 0번부터 자동 생성
-    private Long id;
+    @Column(name = "user_key")
+    private Long userKey;
 
-    @Column(nullable = false, unique = true)
-    private String userId;
+    @Column(name = "id", nullable = false, unique = true)
+    private String id;
 
     @Column(nullable = false)
     private String password;
@@ -63,7 +64,7 @@ public class Member {
     @ManyToMany
     @JoinTable(
             name = "user_authority",
-            joinColumns = {@JoinColumn(name = "id")},
+            joinColumns = {@JoinColumn(name = "user_key")},
             inverseJoinColumns = {@JoinColumn(name = "authority_name")})
     private Set<Authority> authorities;
 
