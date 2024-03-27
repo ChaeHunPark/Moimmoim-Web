@@ -7,6 +7,7 @@ import RegisterPage from './Component/Page/RegisterPage/RegisterPage';
 import { Auth } from './hoc/Auth';
 import ForbiddenPage from './Component/Page/ForbiddenPage/ForbiddenPage';
 import { CreatePost } from './Component/Page/BoradPage/CreatePost';
+import DaumAddress from './Component/Page/BoradPage/DaumAddress';
 
 
 
@@ -17,8 +18,8 @@ function App() {
 
 
 
-  return (
-    <div>
+  return (  
+
       <BrowserRouter initialEntries={['/main']}>
         <Routes>
           <Route path="/main" element={<AuthenticatedMainPage/>}></Route>
@@ -26,13 +27,13 @@ function App() {
           <Route path='/findid' element={<FindId />}></Route>
           <Route path='/findpw' element={<FindPw />}></Route>
           <Route path='/registeruser' element={<RegisterPage />}></Route>
-          <Route path='createpost' element={<CreatePost/>}/>
-
+          <Route path='/createpost' element={<CreatePost/>}/>
+          <Route path="/address" element={<DaumAddress/>} />
           <Route path="/forbidden" element={<ForbiddenPage/>} />
-          
+
         </Routes>
       </BrowserRouter>
-    </div>
+
   );
 }
 

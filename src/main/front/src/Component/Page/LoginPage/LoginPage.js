@@ -6,7 +6,7 @@ import axios from 'axios';
 
 const LoginPage = () => {
 
-    const [id, setId] = useState('');
+    const [userId, setUserId] = useState('');
     const [password, setPassword] = useState('');
     const navi = useNavigate();
 
@@ -20,12 +20,13 @@ const LoginPage = () => {
         e.preventDefault();
         try {
             const data = {
-                id: id,
+                userId: userId,
                 password: password
             };
             const response = await axios.post('/api/authenticate',data);
             const token = response.data.token;
             localStorage.setItem('token', token);
+            localStorage.setItem('userId', userId);
             navi("/main")
             console.log(response.data.token)
 
@@ -48,10 +49,9 @@ const LoginPage = () => {
                     <div className='login-logo'>
                         <Link to={'/'}>MoimMoim</Link>
                     </div>
-                    <input type="text" id="id" name="id" required placeholder='ID' value={id} onChange={(e) =>{handleChange(e, setId)}}/>
+                    <input type="text" id="userId" name="userId" required placeholder='ID' value={userId} onChange={(e) =>{handleChange(e, setUserId)}}/>
                     <input type="password" id="password" name="password" required placeholder='Password' value={password} onChange={(e) =>{handleChange(e, setPassword)}} />
                     <div></div>
-                    <button type="submit">Login</button>
                     <button type="submit">Login</button>
 
                     <div className='find-container'>

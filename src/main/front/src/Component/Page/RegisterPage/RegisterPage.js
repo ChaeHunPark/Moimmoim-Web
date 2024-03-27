@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 import { useFormik } from 'formik';
 
 import { validationSchemaFirst, validationSchemaSecond } from '../../../utils/Register/ValidationStorage';
-import { Register } from '../../../api/Register/Register';
-import { checkIdAvailable, checkNicknameAvailable } from '../../../api/Register/CheckAvailable';
+import { Register } from './Api/Register';
+import { checkUserIdAvailable, checkNicknameAvailable } from './Api/CheckAvailable';
 import { formatPhoneNumber } from '../../../utils/Register/phoneUtils';
 import { formatBirthNumber } from '../../../utils/Register/birthUtils';
 
@@ -21,7 +21,7 @@ const RegisterPage = () => {
 
     const formikFirst = useFormik({
         initialValues: {
-            id: '',
+            userId: '',
             password: '',
             confirmPassword: '',
             email: '',
@@ -32,7 +32,7 @@ const RegisterPage = () => {
             console.log(values);
 
             // 아이디 중복 검사 수행
-            checkIdAvailable(formikFirst, values, setSection)
+            checkUserIdAvailable(formikFirst, values, setSection)
   
         },
     });
@@ -89,16 +89,16 @@ const RegisterPage = () => {
                         <form onSubmit={formikFirst.handleSubmit}>
                             <div className='register-form'>
                                 <div className='input-id'>
-                                    <label htmlFor="id">아이디:</label>
+                                    <label htmlFor="userId">아이디:</label>
                                     <input
                                         type="text"
-                                        id="id"
-                                        name="id"
+                                        id="userId"
+                                        name="userId"
                                         onChange={formikFirst.handleChange}
                                         onBlur={formikFirst.handleBlur}
-                                        value={formikFirst.values.id}
+                                        value={formikFirst.values.userId}
                                     />
-                                    {formikFirst.touched.id && formikFirst.errors.id ? <div>{formikFirst.errors.id}</div> : null}
+                                    {formikFirst.touched.userId && formikFirst.errors.userId ? <div>{formikFirst.errors.userId}</div> : null}
                                 </div>
                                 <div className='input-pw'>
                                     <label htmlFor="password">비밀번호:</label>

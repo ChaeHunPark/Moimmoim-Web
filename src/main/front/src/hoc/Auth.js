@@ -9,10 +9,10 @@ export const Auth = (WrappedComponent) => {
   
       useEffect(() => {
         const checkAuthentication = async () => {
-          // 실제 인증 체크 로직으로 대체하세요
+          // 실제 인증 체크 로직으로 대체
           const isAuthenticated = await ValidateToken();
   
-          // 인증되지 않은 경우 로그인 페이지로 리다이렉트
+          // 인증되지 오류페이지로 리다이렉트
           if (!isAuthenticated) {
             navigate('/forbidden');
           }
