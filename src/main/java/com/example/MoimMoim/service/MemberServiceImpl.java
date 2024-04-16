@@ -36,7 +36,7 @@ public class MemberServiceImpl implements MemberService {
                 .build();
 
         Member member = Member.builder()
-                .id(memberDto.getId())
+                .username(memberDto.getUsername())
                 .password(passwordEncoder.encode(memberDto.getPassword()))
                 .email(memberDto.getEmail())
                 .phone(memberDto.getPhone())
@@ -56,8 +56,8 @@ public class MemberServiceImpl implements MemberService {
     };
 
     // 중복아이디 조회
-    public boolean checkIfMemberExists(String id){
-        return !memberRepository.existsById(id); // 아이디를 찾지 못하면 true를 넘겨줌
+    public boolean checkIfMemberExists(String username){
+        return !memberRepository.existsByUsername(username); // 아이디를 찾지 못하면 true를 넘겨줌
     }
 
     public boolean checkIfNicknameExists(String nickname){
@@ -67,12 +67,12 @@ public class MemberServiceImpl implements MemberService {
     /**
      * ID를 기반으로 사용자와 해당 사용자의 권한을 조회하는
      *
-     * @param userId 조회할 사용자의 ID
+     * @param username 조회할 사용자의 ID
      * @return MemberDto 객체 (사용자 정보 및 권한 정보 포함)
      */
     @Transactional(readOnly = true)
-    public MemberDto getUserWithAuthorities(String id) {
-        return MemberDto.from(memberRepository.findOneWithAuthoritiesById(id).orElse(null));
+    public MemberDto getUserWithAuthorities(String username) {
+        return MemberDto.from(memberRepository.findOneWithAuthoritiesByUsername(username).orElse(null));
     }
 
     /**
@@ -86,7 +86,7 @@ public class MemberServiceImpl implements MemberService {
     public MemberDto getMyUserWithAuthorities() {
         return MemberDto.from(
                 SecurityUtil.getCurrentid()
-                        .flatMap(memberRepository::findOneWithAuthoritiesById)
+                        .flatMap(memberRepository::findOneWithAuthoritiesByUsername)
                         .orElseThrow(() -> new NotFoundMemberException("Member not found"))
         );
     }

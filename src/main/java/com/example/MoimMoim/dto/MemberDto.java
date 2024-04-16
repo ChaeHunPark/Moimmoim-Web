@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 @NoArgsConstructor
 public class MemberDto {
-    private String id;
+    private String username;
     private String password;
     private String email;
     private String phone;
@@ -30,7 +30,7 @@ public class MemberDto {
         if(member == null) return null;
 
         return MemberDto.builder()
-                .id(member.getId())
+                .username(member.getUsername())
                 .password(member.getPassword())
                 .email(member.getEmail())
                 .phone(member.getPhone())

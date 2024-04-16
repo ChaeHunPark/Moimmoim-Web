@@ -11,12 +11,12 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api")
-public class MemberRestController {
+public class MemberController {
 
     private final MemberService memberService;
 
     @Autowired
-    public MemberRestController(MemberService memberService) {
+    public MemberController(MemberService memberService) {
         this.memberService = memberService;
     }
 
@@ -52,7 +52,7 @@ public class MemberRestController {
      * @param request 현재 HTTP 요청 객체
      * @return ResponseEntity<MemberDto> 객체 (사용자 정보 및 권한 정보 포함)
      */
-    @GetMapping("/user")
+    @GetMapping("/validate-token")
     @PreAuthorize("hasAnyRole('USER','ADMIN')")
     public ResponseEntity<MemberDto> getMyUserInfo(HttpServletRequest request) {
         return ResponseEntity.ok(memberService.getMyUserWithAuthorities());

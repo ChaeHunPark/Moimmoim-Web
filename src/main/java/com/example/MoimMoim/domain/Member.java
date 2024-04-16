@@ -17,11 +17,11 @@ public class Member {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // 0번부터 자동 생성
-    @Column(name = "user_key")
-    private Long userKey;
+    @Column(name = "member_id")
+    private Long memberId;
 
     @Column(name = "id", nullable = false, unique = true)
-    private String id;
+    private String username;
 
     @Column(nullable = false)
     private String password;
@@ -51,11 +51,11 @@ public class Member {
     private String answer;
 
     @Column(nullable = false)
-    private LocalDateTime registration_date;
+    private LocalDateTime registrationDate;
 
     @PrePersist
     protected void onCreate(){
-        registration_date = LocalDateTime.now();
+        registrationDate = LocalDateTime.now();
     }
 
     @Column(name = "activated")

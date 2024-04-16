@@ -7,7 +7,7 @@ export const ValidateToken = async () => {
     
     try {
         // 서버로 GET 요청 보내기
-        const response = await axios.get('/api/user', {
+        const response = await axios.get('/api/validate-token', {
             headers: {
                 'Authorization': `Bearer ${token}`,  // Bearer 토큰을 헤더에 추가
             },
