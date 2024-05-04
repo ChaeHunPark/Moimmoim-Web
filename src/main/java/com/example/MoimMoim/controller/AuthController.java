@@ -44,7 +44,7 @@ public class AuthController {
 
         // 사용자가 입력한 아이디와 비밀번호로 UsernamePasswordAuthenticationToken 생성
         UsernamePasswordAuthenticationToken authenticationToken =
-                new UsernamePasswordAuthenticationToken(loginDto.getId(), loginDto.getPassword()); //
+                new UsernamePasswordAuthenticationToken(loginDto.getUsername(), loginDto.getPassword()); //
 
         try {
             // 인증을 수행하고, 성공하면 Authentication 객체가 SecurityContext에 설정됨

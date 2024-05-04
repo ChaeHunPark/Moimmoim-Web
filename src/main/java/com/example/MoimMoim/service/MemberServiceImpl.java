@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.Collections;
 
 
@@ -41,7 +40,7 @@ public class MemberServiceImpl implements MemberService {
                 .email(memberDto.getEmail())
                 .phone(memberDto.getPhone())
                 .name(memberDto.getName())
-                .birth(memberDto.getBirth())
+                .birthdate(memberDto.getBirthdate())
                 .gender(memberDto.getGender())
                 .nickname(memberDto.getNickname())
                 .question(memberDto.getQuestion())
@@ -53,15 +52,16 @@ public class MemberServiceImpl implements MemberService {
 
 
         return MemberDto.from(memberRepository.save(member));
-    };
-
-    // 중복아이디 조회
-    public boolean checkIfMemberExists(String username){
-        return !memberRepository.existsByUsername(username); // 아이디를 찾지 못하면 true를 넘겨줌
     }
 
-    public boolean checkIfNicknameExists(String nickname){
-        return !memberRepository.existsByNickname(nickname); //닉네임이 없으면 true
+    @Override
+    public boolean isUsernameAlreadyInUse(String username) {
+        return memberRepository.existsByUsername(username);
+    }
+
+    @Override
+    public boolean isNicknameAlreadyInUse(String nickname){
+        return memberRepository.existsByNickname(nickname);
     }
 
     /**

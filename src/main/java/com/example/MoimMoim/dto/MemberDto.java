@@ -18,12 +18,11 @@ public class MemberDto {
     private String email;
     private String phone;
     private String name;
-    private String birth;
+    private String birthdate;
     private String gender;
     private String nickname;
     private String question;
     private String answer;
-
     private Set<AuthorityDto> authorityDtoSet;
 
     public static MemberDto from(Member member){
@@ -35,7 +34,7 @@ public class MemberDto {
                 .email(member.getEmail())
                 .phone(member.getPhone())
                 .name(member.getName())
-                .birth(member.getBirth())
+                .birthdate(member.getBirthdate())
                 .gender(member.getGender())
                 .nickname(member.getNickname())
                 .question(member.getQuestion())

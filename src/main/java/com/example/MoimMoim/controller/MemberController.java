@@ -4,8 +4,10 @@ import com.example.MoimMoim.service.MemberService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -15,31 +17,33 @@ public class MemberController {
 
     private final MemberService memberService;
 
+
     @Autowired
     public MemberController(MemberService memberService) {
         this.memberService = memberService;
     }
 
+
+    // 회원가입 수행
     @PostMapping("/register")
-    public ResponseEntity<MemberDto> Registration(@Valid @RequestBody MemberDto memberDto){ //dto로 이용한 request 매핑
+    public ResponseEntity<MemberDto> registration(@Valid @RequestBody MemberDto memberDto){ //dto로 이용한 request 매핑
         return ResponseEntity.ok(memberService.signUp(memberDto));
     }
 
+    // 닉네임 중복체크 수행
+    // return 값 true면 중복
+    @GetMapping("/check-username/{username}")
+    public ResponseEntity<Boolean> checkUsernameExists(@PathVariable String username) {
+        boolean exists = memberService.isUsernameAlreadyInUse(username);
+        return ResponseEntity.status(HttpStatus.OK).body(exists);
+    }
 
-    @PostMapping("/check-id")
-    public boolean CheckId(@RequestBody MemberDto memberDto){
-        if(memberService.checkIfMemberExists(memberDto.getId())){
-            return true;
-        }
-        return false;
-    };
-
-    @PostMapping("/check-nickname")
-    public boolean CheckNickname(@RequestBody MemberDto memberDto){
-        if(memberService.checkIfNicknameExists(memberDto.getNickname())){
-            return true;
-        }
-        return false;
+    // 닉네임 중복체크 수행
+    // return 값 true면 중복
+    @GetMapping("/check-nickname/{nickname}")
+    public ResponseEntity<Boolean> checkNicknameExists(@PathVariable String nickname){
+        boolean exists = memberService.isNicknameAlreadyInUse(nickname);
+        return ResponseEntity.status(HttpStatus.OK).body(exists);
     }
 
 

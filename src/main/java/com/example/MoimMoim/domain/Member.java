@@ -20,7 +20,7 @@ public class Member {
     @Column(name = "member_id")
     private Long memberId;
 
-    @Column(name = "id", nullable = false, unique = true)
+    @Column(nullable = false, unique = true)
     private String username;
 
     @Column(nullable = false)
@@ -36,7 +36,7 @@ public class Member {
     private String name;
 
     @Column(nullable = false)
-    private String birth;
+    private String birthdate;
 
     @Column(nullable = false)
     private String gender;
@@ -64,7 +64,7 @@ public class Member {
     @ManyToMany
     @JoinTable(
             name = "user_authority",
-            joinColumns = {@JoinColumn(name = "user_key")},
+            joinColumns = {@JoinColumn(name = "member_id")},
             inverseJoinColumns = {@JoinColumn(name = "authority_name")})
     private Set<Authority> authorities;
 
