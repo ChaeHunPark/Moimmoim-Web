@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Set;
 
 @NoArgsConstructor
@@ -61,11 +62,23 @@ public class Member {
     @Column(name = "activated")
     private boolean activated;
 
+
+
+    /*------------------------------------ 매핑 --------------------------------------------*/
+
+
     @ManyToMany
     @JoinTable(
             name = "user_authority",
             joinColumns = {@JoinColumn(name = "member_id")},
             inverseJoinColumns = {@JoinColumn(name = "authority_name")})
     private Set<Authority> authorities;
+
+    @OneToMany(mappedBy = "member")
+    private List<Board> boards;
+
+    @OneToMany(mappedBy = "member")
+    private List<BoardComment> boardComments;
+
 
 }

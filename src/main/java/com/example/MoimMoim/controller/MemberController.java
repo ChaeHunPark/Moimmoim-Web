@@ -32,16 +32,16 @@ public class MemberController {
 
     // 닉네임 중복체크 수행
     // return 값 true면 중복
-    @GetMapping("/check-username/{username}")
-    public ResponseEntity<Boolean> checkUsernameExists(@PathVariable String username) {
+    @GetMapping("/username-duplicate")
+    public ResponseEntity<Boolean> checkUsernameExists(@RequestParam("username") String username) {
         boolean exists = memberService.isUsernameAlreadyInUse(username);
         return ResponseEntity.status(HttpStatus.OK).body(exists);
     }
 
     // 닉네임 중복체크 수행
     // return 값 true면 중복
-    @GetMapping("/check-nickname/{nickname}")
-    public ResponseEntity<Boolean> checkNicknameExists(@PathVariable String nickname){
+    @GetMapping("/nickname-duplicate")
+    public ResponseEntity<Boolean> checkNicknameExists(@RequestParam("nickname") String nickname){
         boolean exists = memberService.isNicknameAlreadyInUse(nickname);
         return ResponseEntity.status(HttpStatus.OK).body(exists);
     }

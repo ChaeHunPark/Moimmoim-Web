@@ -5,7 +5,16 @@ import com.example.MoimMoim.dto.MemberDto;
 
 
 public interface MemberService {
+
+    /*
+    * 생성
+    * */
     MemberDto signUp(MemberDto memberDto);
+
+
+    /*
+    * 조회
+    * */
     boolean isUsernameAlreadyInUse(String username);
     boolean isNicknameAlreadyInUse(String nickname);
     MemberDto getUserWithAuthorities(String id);
